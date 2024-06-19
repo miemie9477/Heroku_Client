@@ -10,17 +10,17 @@ import AdminforOrderForms from "./AdminforOrderForms";
 const AdminforOrder = () =>{
     const [members, setMembers] = useState([]);
     const [transInfo, setTransInfo] = useState([]);
-
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(() => {
         const fetchTransInfo = async () => {
             
-            const url = "http://localhost:3001/modifyAdminSide/viewTrans";
+            const url = `${apiUrl}/modifyAdminSide/viewTrans`;
             const response = await axios.post(url);
             console.log(response.data);
             
 
             const updatedTransInfo = await Promise.all(response.data.map(async item => {
-                const recordUrl = "http://localhost:3001/modifyMemberSide/viewRecord";
+                const recordUrl = `${apiUrl}/modifyMemberSide/viewRecord`;
                 const rId = item.rId;
                 const recordResponse = await axios.post(recordUrl, { rId });
                 return { ...item, ...recordResponse.data};

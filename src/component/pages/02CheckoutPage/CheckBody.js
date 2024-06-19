@@ -28,8 +28,10 @@ const CheckBody = () =>{
 
     });
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     useEffect(() =>{
-        axios.post("http://localhost:3001/cart/checkExist", {userAccount})
+        axios.post(`${apiUrl}/cart/checkExist`, {userAccount})
         .then(
             response =>{
                 console.log("get:", response.data.tId);
@@ -56,7 +58,7 @@ const CheckBody = () =>{
 
     const onSubmit = async (data) => {
         for (const item of Cart_Mer) {
-            var url = "http://localhost:3001/check/checkPAmount";
+            var url = `${apiUrl}/check/checkPAmount`;
             const pNo = item.pNo;
             const amount = item.amount;
             console.log("pNo", pNo, amount);
@@ -96,7 +98,7 @@ const CheckBody = () =>{
         
                 }
                 console.log(info);
-                var url = "http://localhost:3001/check/inputTrans"
+                var url = `${apiUrl}/check/inputTrans`
                 axios.post(url, info)
                 .then(
                     response =>{
@@ -115,7 +117,7 @@ const CheckBody = () =>{
     const inputRecord = async (rId) =>{
         console.log("enter:", rId);
         for (const item of Cart_Mer) {
-            var url = "http://localhost:3001/check/inputRecord";
+            var url = `${apiUrl}/check/inputRecord`;
             const pNo = item.pNo;
             const amount = item.amount;
             const unitPrice = item.unitPrice;
@@ -127,7 +129,7 @@ const CheckBody = () =>{
                     }
                 }
             )
-            const discardUrl = "http://localhost:3001/cart/cartDiscard";
+            const discardUrl = `${apiUrl}/cart/cartDiscard`;
             await axios.post(discardUrl, {tId, pNo})
             .then(
                 response =>{

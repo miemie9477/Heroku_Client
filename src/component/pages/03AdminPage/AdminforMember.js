@@ -9,9 +9,11 @@ import AdminforMemberForms from "./AdminforMemberForms";
 
 const AdminforMember = () =>{
     const [members, setMembers] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
+
 
     useEffect(() =>{
-        const url = "http://localhost:3001/modifyAdminSide/viewMember"
+        const url = `${apiUrl}/modifyAdminSide/viewMember`
         axios.get(url)
         .then(
             response =>{

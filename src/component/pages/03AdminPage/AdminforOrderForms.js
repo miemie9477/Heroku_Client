@@ -9,7 +9,7 @@ const AdminforOrderForms = ({info}) =>{
         reValidateMode:"onBlur",
 
     });
-    
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const onSubmit = (data) => { 
         const rId = data.Admin_Order_TransNum;
@@ -20,7 +20,7 @@ const AdminforOrderForms = ({info}) =>{
         const tState = data.Admin_Order_ShipState;
         const payState = data.Admin_Order_PayState;
         const total = data.Admin_Order_OrderTotal;
-        const url = "http://localhost:3001/modifyAdminSide/modifyTrans";
+        const url = `${apiUrl}/modifyAdminSide/modifyTrans`;
         axios.post(url, {rId, mId, recipient, tDelivery, tAddress, tState, payState, total})
         .then(
             response =>{
@@ -38,7 +38,7 @@ const AdminforOrderForms = ({info}) =>{
         const values = getValues();
         const rId = values.Admin_Order_TransNum;
         console.log(rId);
-        const url = "http://localhost:3001/modifyAdminSide/deleteTrans";
+        const url = `${apiUrl}/modifyAdminSide/deleteTrans`;
         axios.post(url, {rId})
         .then(
             response =>{

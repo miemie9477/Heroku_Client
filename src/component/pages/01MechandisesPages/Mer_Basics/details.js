@@ -24,10 +24,11 @@ const Details = ({pNo,Alcohol}) => {
         pIntroduction:"",
         pAmount:""
     });
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() =>{
         
-        const url = `http://localhost:3001/pDetail/getDetail/${pNo}`
+        const url = `${apiUrl}/pDetail/getDetail/${pNo}`
         axios.get(url)
         .then(
             response =>{
@@ -76,7 +77,7 @@ const Details = ({pNo,Alcohol}) => {
         else if(login === 1) {
             console.log("userAccount:"+ userAccount)
             
-            const url = "http://localhost:3001/cart/checkExist"
+            const url = "${apiUrl}/cart/checkExist"
             axios.post(url, {userAccount})
             .then(
                 response =>{
@@ -105,7 +106,7 @@ const Details = ({pNo,Alcohol}) => {
 
     
     const AddCart = async (tId) =>{
-        const url = "http://localhost:3001/cart/add"
+        const url = "${apiUrl}/cart/add"
         
         const reqInfo={
             tId: tId,

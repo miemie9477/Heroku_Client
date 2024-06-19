@@ -10,6 +10,7 @@ import { AccountContext } from "../../../ContextAPI";
 import axios from "axios";
 
 const Mem_PWreset = ({defaultInfo}) =>{
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const navigate = useNavigate();
     const { userAccount, setUserAccount} = useContext(AccountContext);
@@ -38,7 +39,7 @@ const Mem_PWreset = ({defaultInfo}) =>{
     const onSubmit = (data) => {
         if(validatePasswords())
         {
-            const url = "http://localhost:3001/modifyMemberSide/modifyPwd"
+            const url = `${apiUrl}/modifyMemberSide/modifyPwd`
             const mPwd = data.Member_NewPassword;
             axios.post(url, {userAccount, mPwd})
             .then(

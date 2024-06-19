@@ -10,9 +10,10 @@ import AdminStatisticsforFemalePopular from "./AdminStatisticsforFemalePopular";
 const Admin_Statis_FemalePopular = () =>{
     const [members, setMembers] = useState([]);
     const [transInfo, setTransInfo] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        const url = "http://localhost:3001/modifyAdminSide/femaleChart";
+        const url = `${apiUrl}/modifyAdminSide/femaleChart`;
         axios.post(url)
         .then(
             response =>{

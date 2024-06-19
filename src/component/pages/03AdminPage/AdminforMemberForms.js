@@ -9,7 +9,7 @@ const AdminforMemberForms = ({member}) =>{
         reValidateMode:"onBlur",
 
     });
-    
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const onSubmit = (data) => {
         const mId = data.Admin_Mem_MemNum
@@ -21,7 +21,7 @@ const AdminforMemberForms = ({member}) =>{
         const birthday = data.Admin_Mem_MemBirth
         const mAccount = data.Admin_Mem_MemAccount;
         const mPwd = data.Admin_Mem_MemPwd
-        const url = "http://localhost:3001/modifyAdminSide/modifyMember"
+        const url = `${apiUrl}/modifyAdminSide/modifyMember`
         axios.post(url, {mId, mName, pId, email, gender, phone, birthday, mAccount, mPwd})
         .then(
             response =>{
@@ -38,7 +38,7 @@ const AdminforMemberForms = ({member}) =>{
         const values = getValues();
         const mId = values.Admin_Mem_MemNum;
         console.log(mId);
-        const url = "http://localhost:3001/modifyAdminSide/deleteMember";
+        const url = `${apiUrl}/modifyAdminSide/deleteMember`;
         axios.post(url, {mId})
         .then(
             response =>{

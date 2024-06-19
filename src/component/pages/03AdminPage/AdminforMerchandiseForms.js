@@ -9,6 +9,7 @@ const AdminforMerchandiseForms = ({member}) =>{
         reValidateMode:"onBlur",
 
     });
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const onSubmit = (data) => {
         const pNo = data.Admin_Mer_MerNum;
@@ -19,7 +20,7 @@ const AdminforMerchandiseForms = ({member}) =>{
         const unitPrice = data.Admin_Mer_MerUnitprice;
         const pIntroduction = data.Admin_Mer_MerIntro;
         const pAmount = data.Admin_Mer_MerAccount;
-        const url = "http://localhost:3001/modifyAdminSide/modifyMerchandise"
+        const url = `${apiUrl}/modifyAdminSide/modifyMerchandise`
         axios.post(url, {pNo, pName, specification, brand, category, unitPrice, pIntroduction, pAmount})
         .then(
             response =>{

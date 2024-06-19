@@ -11,9 +11,10 @@ import AdminStatisticsforMalePopular from "./AdminStatisticsforMalePopular"
 const Admin_Statis_MalePopular = () =>{
     const [members, setMembers] = useState([]);
     const [transInfo, setTransInfo] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
-        const url = "http://localhost:3001/modifyAdminSide/maleChart";
+        const url = `${apiUrl}/modifyAdminSide/maleChart`;
         axios.post(url)
         .then(
             response =>{

@@ -19,18 +19,19 @@ const Mem_OrderManage = () =>{
     });
     const [transInfo, setTransInfo] = useState([]);
     
-    
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     
     useEffect(() => {
         const fetchTransInfo = async () => {
             try {
-                const url = "http://localhost:3001/modifyMemberSide/viewTrans";
+                const url = `${apiUrl}/modifyMemberSide/viewTrans`;
                 const response = await axios.post(url, { userAccount });
                 console.log(response.data);
                 
 
                 const updatedTransInfo = await Promise.all(response.data.map(async item => {
-                    const recordUrl = "http://localhost:3001/modifyMemberSide/viewRecord";
+                    const recordUrl = `${apiUrl}/modifyMemberSide/viewRecord`;
                     const rId = item.rId;
                     const recordResponse = await axios.post(recordUrl, { rId });
                     return { ...recordResponse.data, ...item };

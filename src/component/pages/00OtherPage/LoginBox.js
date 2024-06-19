@@ -31,7 +31,7 @@ const LoginBox = () =>{
         
         console.log(data);
 
-        const url = '${apiUrl}/login/verify';
+        const url = `${apiUrl}/login/verify`;
         const info = {
             mAccount : data.inputAccount,
             mPwd: data.inputPassword

@@ -9,9 +9,10 @@ import AdminforMerchandiseForms from "./AdminforMerchandiseForms";
 
 const AdminforMerchandise = () =>{
     const [members, setMembers] = useState([]);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     useEffect(() =>{
-        const url = "http://localhost:3001/modifyAdminSide/viewMerchandise"
+        const url = `${apiUrl}/modifyAdminSide/viewMerchandise`
         axios.get(url)
         .then(
             response =>{

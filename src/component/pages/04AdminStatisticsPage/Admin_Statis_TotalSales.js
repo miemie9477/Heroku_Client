@@ -10,9 +10,9 @@ import AdminStatisticsforTotalSales from "./AdminStatisticsforTotalSales"
 const Admin_Statis_TotalSales = () =>{
     const [members, setMembers] = useState([]);
     const [transInfo, setTransInfo] = useState([]);
-
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(() => {
-        const url = "http://localhost:3001/modifyAdminSide/saleTotalChart";
+        const url = `${apiUrl}/modifyAdminSide/saleTotalChart`;
         axios.post(url)
         .then(
             response =>{

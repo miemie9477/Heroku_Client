@@ -19,7 +19,8 @@ const MemberforRatesForms = ({info}) =>{
         reValidateMode:"onBlur",
 
     });
-    
+    const apiUrl = process.env.REACT_APP_API_URL;
+
     const [ItemInfos, setItemInfos] = useState([]);
 
     useEffect(() => {
@@ -55,7 +56,7 @@ const MemberforRatesForms = ({info}) =>{
             console.log("date:", date);
             console.log("pNo:", pNo);
             console.log("message:", message);
-            const url = "http://localhost:3001/modifyMemberSide/rating";
+            const url = `${apiUrl}/modifyMemberSide/rating`;
             axios.post(url, {userAccount, pNo, date, message})
             .then(
                 response =>{
@@ -76,7 +77,7 @@ const MemberforRatesForms = ({info}) =>{
     const returnMer = () =>{
         const rId = info.rId;
         console.log("rId:", rId);
-        const url = "http://localhost:3001/modifyMemberSide/return"
+        const url = `${apiUrl}/modifyMemberSide/return`
         axios.post(url, {rId})
         .then(
             response =>{

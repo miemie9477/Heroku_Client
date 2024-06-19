@@ -21,10 +21,10 @@ const Mem_DataReset = ({defaultInfo, setDefaultInfo}) =>{
         reValidateMode:"onBlur",
 
     });
-    
+    const apiUrl = process.env.REACT_APP_API_URL;
     useEffect(() =>{
         console.log("get:" + userAccount);
-        const url = `http://localhost:3001/modifyMemberSide/getData/${userAccount}`
+        const url = `${apiUrl}/modifyMemberSide/getData/${userAccount}`
         axios.get(url)
         .then(
             response =>{
@@ -47,7 +47,7 @@ const Mem_DataReset = ({defaultInfo, setDefaultInfo}) =>{
             address: data.Member_Address,
             phone: data.Member_Phone,
         }
-        const url = "http://localhost:3001/modifyMemberSide/modifyData"
+        const url = `${apiUrl}/modifyMemberSide/modifyData`
         axios.post(url, modifyInfo)
         .then(
             response =>{
