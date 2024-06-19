@@ -24,11 +24,14 @@ const LoginBox = () =>{
         }
     }, [userAccount]);
 
+    const apiUrl = process.env.REACT_APP_API_URL;
+
+
     const onSubmit = (data) => {
         
         console.log(data);
 
-        const url = 'http://localhost:3001/login/verify';
+        const url = '${apiUrl}/login/verify';
         const info = {
             mAccount : data.inputAccount,
             mPwd: data.inputPassword
