@@ -32,11 +32,11 @@ const LoginBox = () =>{
         console.log(data);
 
         const url = `${apiUrl}/login/verify`;
+        console.log("url:", url);
         const info = {
             mAccount : data.inputAccount,
             mPwd: data.inputPassword
         }
-        console.log("url:", url);
         axios.post(url, info)
         .then(
             response=>{           
