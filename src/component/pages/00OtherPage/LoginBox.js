@@ -25,7 +25,7 @@ const LoginBox = () =>{
     }, [userAccount]);
 
     const apiUrl = process.env.REACT_APP_API_URL;
-
+    
 
     const onSubmit = (data) => {
         
@@ -36,7 +36,7 @@ const LoginBox = () =>{
             mAccount : data.inputAccount,
             mPwd: data.inputPassword
         }
-
+        console.log("url:", url);
         axios.post(url, info)
         .then(
             response=>{           
