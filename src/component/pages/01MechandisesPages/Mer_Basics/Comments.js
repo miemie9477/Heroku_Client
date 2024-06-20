@@ -20,7 +20,8 @@ const Comments = ({pNo}) => {
     var [totalPages, settotalPages] = useState(1);
 
     useEffect(() =>{
-        const url = "http://localhost:3001/pDetail/getBoard"
+        const apiUrl = process.env.REACT_APP_API_URL
+        const url = `${apiUrl}/pDetail/getBoard`
         console.log()
         axios.post(url, {pNo})
         .then(

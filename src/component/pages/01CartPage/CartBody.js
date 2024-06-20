@@ -56,7 +56,7 @@ const CartBody = () =>{
     };
 
     useEffect(() => {
-        axios.post("${apiUrl}/cart/checkExist", {userAccount})
+        axios.post(`${apiUrl}/cart/checkExist`, {userAccount})
         .then(
             response =>{
                 tId = response.data.tId;
@@ -186,7 +186,9 @@ const Item = ({cartdata, updateTotalPrice, minusAmount, plusAmount}) =>{
         console.log("amount:", amount)
         console.log("tId:", tId);
 
-        const url = "${apiUrl}/cart/modifyAmount"
+        const apiUrl = process.env.REACT_APP_API_URL
+
+        const url = `${apiUrl}/cart/modifyAmount`
         axios.post(url, {tId, pNo, amount})
         .then(
             response =>{
@@ -202,7 +204,9 @@ const Item = ({cartdata, updateTotalPrice, minusAmount, plusAmount}) =>{
     }, [Cart_num])
 
     const Discard = () =>{
-        const url = "${apiUrl}/cart/cartDiscard";
+        const apiUrl = process.env.REACT_APP_API_URL
+        
+        const url = `${apiUrl}/cart/cartDiscard`;
         const pNo = cartdata.pNo;
         console.log("tId:", tId);
         console.log("pNo:", pNo);

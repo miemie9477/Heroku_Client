@@ -77,7 +77,7 @@ const Details = ({pNo,Alcohol}) => {
         else if(login === 1) {
             console.log("userAccount:"+ userAccount)
             
-            const url = "${apiUrl}/cart/checkExist"
+            const url = `${apiUrl}/cart/checkExist`
             axios.post(url, {userAccount})
             .then(
                 response =>{

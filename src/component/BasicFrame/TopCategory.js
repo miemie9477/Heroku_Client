@@ -23,7 +23,8 @@ const Category = () => {
         //自己把下面搜尋結果填進 keyword
         const keyword = data.Search;
         console.log(keyword);
-        const url = `http://localhost:3001/pDetail/search/${keyword}`
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const url = `${apiUrl}/pDetail/search/${keyword}`
         axios.get(url)
         .then(
             response =>{

@@ -46,7 +46,8 @@ const RegisterForm = () =>{
     const checkAccount = async () => {
         console.log("check :" + mAccount);
         if (typeof mAccount !== 'undefined') {
-            const url = "http://localhost:3001/register/account";
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const url = `${apiUrl}/register/account`;
             try {
                 const response = await axios.post(url, { mAccount });
                 if (response.data.result === "mAccount exist") {
@@ -69,7 +70,8 @@ const RegisterForm = () =>{
     const checkPId = async () => {
         console.log("check :" + pId);
         if (typeof pId !== 'undefined') {
-            const url = "http://localhost:3001/register/pId";
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const url = `${apiUrl}/register/pId`;
             try {
                 const response = await axios.post(url, { pId });
                 if (response.data.result === "pId exist") {
@@ -91,7 +93,8 @@ const RegisterForm = () =>{
     const checkEmail = async () => {
         console.log("check :" + email);
         if (typeof email !== 'undefined') {
-            const url = "http://localhost:3001/register/email";
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const url = `${apiUrl}/register/email`;
             try {
                 const response = await axios.post(url, { email });
                 if (response.data.result === "email exist") {
@@ -113,7 +116,8 @@ const RegisterForm = () =>{
     const checkPhone = async () => {
         console.log("check :" + phone);
         if (typeof phone !== 'undefined') {
-            const url = "http://localhost:3001/register/phone";
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const url = `${apiUrl}/register/phone`;
             try {
                 const response = await axios.post(url, { phone });
                 if (response.data.result === "phone exist") {
@@ -153,8 +157,8 @@ const RegisterForm = () =>{
                 birthday: data.birthday
             }
             console.log(registerInfo);
-            
-            const url = "http://localhost:3001/register/check"; 
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const url = `${apiUrl}/register/check`; 
             axios.post(url, registerInfo)
             .then(
                 response =>{
@@ -175,37 +179,7 @@ const RegisterForm = () =>{
             console.log("One or more validations failed");
             // Handle the validation failure
         }
-        
-        // if(validatePasswords()){
-        //     console.log("pwd ok");
-        // } else{
-        //     console.log("pwd not ok")
-        // }
-
-        // if(checkAccount()) {
-        //     console.log("Account ok");
-        // }else{
-        //     console.log("Account not ok");
-        // }
-
-        // if(checkPId()) {
-        //     console.log("pid ok")
-        // }else{
-        //     console.log("pid not ok")
-        // }
-
-        // if(checkEmail()) {
-        //     console.log("email ok")
-        // }else{
-        //     console.log("email not ok")
-        // }
-
-        // if(checkPhone()) {
-        //     console.log("Phone ok")
-        // }else{
-        //     console.log("Phone not ok")
-        // }
-   
+    
     }
     
     
